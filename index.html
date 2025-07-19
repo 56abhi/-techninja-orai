@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechNinja Orai - Software Se Zinda | Smartphone Repair Expert</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --neon-blue: #00f3ff;
+            --neon-green: #39ff14;
+            --dark-bg: #0a0a0a;
+            --darker-bg: #000000;
+            --card-bg: #1a1a1a;
+            --text-primary: #ffffff;
+            --text-secondary: #cccccc;
+            --gradient: linear-gradient(135deg, #00f3ff, #39ff14);
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: var(--dark-bg);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Header */
+        .header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 0;
+            box-shadow: 0 2px 20px rgba(0, 243, 255, 0.3);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-family: 'Orbitron', monospace;
+            font-size: 1.8rem;
+            font-weight: 900;
+            background: var(--gradient);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-decoration: none;
+        }
+
+        .tagline {
+            font-size: 0.9rem;
+            color: var(--neon-green);
+            margin-top: -5px;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-menu a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-menu a:hover {
+            color: var(--neon-blue);
+            text-shadow: 0 0 10px var(--neon-blue);
+        }
+
+        .mobile-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text-primary);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: radial-gradient(circle at center, rgba(0, 243, 255, 0.1) 0%, transparent 50%);
+            text-align: center;
+            padding: 2rem;
+            position: relative;
+        }
+
+        .hero-content h1 {
+            font-family: 'Orbitron', monospace;
+            font-size: 3.5rem;
+            font-weight: 900;
+            margin-bottom: 1rem;
+            background: var(--gradient);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-tagline {
+            font-size: 1.5rem;
+            color: var(--neon-green);
+            margin-bottom: 2rem;
+            text-shadow: 0 0 20px var(--neon-green);
+        }
+
+        .hero-description {
+            font-size: 1.1rem;
+            max-width: 800px;
+            margin: 0 auto 3rem;
+            color: var(--text-secondary);
+            line-height: 1.8;
+        }
+
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--gradient);
+            color: var(--darker-bg);
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0, 243, 255, 0.3);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(0, 243, 255, 0.5);
+        }
+
+        /* Section Styles */
+        .section {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-family: 'Orbitron', monospace;
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--neon-blue);
+            text-shadow: 0 0 20px var(--neon-blue);
+        }
+
+        /* Services Table */
+        .services-table {
+            background: var(--card-bg);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            margin: 2rem 0;
+        }
+
+        .services-table table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .services-table th {
+            background: var(--gradient);
+            color: var(--darker-bg);
+            padding: 1rem;
+            font-weight: bold;
+            text-align: left;
+        }
+
+        .services-table td {
+            padding: 1rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .services-table tr:hover {
+            background: rgba(0, 243, 255, 0.1);
+        }
+
+        .price {
+            color: var(--neon-green);
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        /* Gallery Grid */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .gallery-item {
+            background: var(--card-bg);
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .gallery-item:hover {
+            border-color: var(--neon-blue);
+            box-shadow: 0 0 30px rgba(0, 243, 255, 0.3);
+        }
+
+        .gallery-item i {
+            font-size: 3rem;
+            color: var(--neon-green);
+            margin-bottom: 1rem;
+        }
+
+        /* Offers */
+        .offers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .offer-card {
+            background: var(--card-bg);
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            border: 2px solid var(--neon-green);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .offer-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: conic-gradient(transparent, rgba(57, 255, 20, 0.1), transparent 30%);
+            animation: rotate 4s linear infinite;
+        }
+
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .offer-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .offer-price {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--neon-green);
+            margin-bottom: 0.5rem;
+        }
+
+        /* Contact Buttons */
+        .contact-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: center;
+            margin: 2rem 0;
+        }
+
+        .contact-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem 1.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            border: 2px solid;
+        }
+
+        .whatsapp {
+            background: #25D366;
+            color: white;
+            border-color: #25D366;
+        }
+
+        .telegram {
+            background: #0088CC;
+            color: white;
+            border-color: #0088CC;
+        }
+
+        .instagram {
+            background: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%);
+            color: white;
+            border-color: transparent;
+        }
+
+        .contact-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        /* About Section */
+        .about-content {
+            background: var(--card-bg);
+            border-radius: 15px;
+            padding: 3rem;
+            text-align: center;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            border-left: 4px solid var(--neon-blue);
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--darker-bg);
+            text-align: center;
+            padding: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: var(--darker-bg);
+                flex-direction: column;
+                padding: 1rem;
+            }
+
+            .nav-menu.active {
+                display: flex;
+            }
+
+            .mobile-toggle {
+                display: block;
+            }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-tagline {
+                font-size: 1.2rem;
+            }
+
+            .section {
+                padding: 3rem 1rem;
+            }
+
+            .services-table {
+                overflow-x: auto;
+            }
+
+            .contact-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--dark-bg);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--neon-blue);
+            border-radius: 4px;
+        }
+
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="nav-container">
+            <div>
+                <a href="#home" class="logo">TechNinja Orai</a>
+                <div class="tagline">Software Se Zinda</div>
+            </div>
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="#home"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="#services"><i class="fas fa-tools"></i> Services</a></li>
+                    <li><a href="#gallery"><i class="fas fa-images"></i> Gallery</a></li>
+                    <li><a href="#contact"><i class="fas fa-message"></i> Contact</a></li>
+                    <li><a href="#about"><i class="fas fa-user"></i> About</a></li>
+                </ul>
+                <button class="mobile-toggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>TechNinja Orai</h1>
+            <p class="hero-tagline">Software Se Zinda ⚡</p>
+            <p class="hero-description">
+                Namaste! I'm <strong>Abhishek</strong> — Class 11 student and tech entrepreneur. I specialize in software-level smartphone fixes: bootloop recovery, unlocking, flashing, and more. Bringing dead phones back to life with smart solutions!
+            </p>
+            <a href="https://wa.me/917309741710?text=Hi%20TechNinja%2C%20I%20need%20phone%20repair%20help" class="cta-button">
+                📲 Message on WhatsApp
+            </a>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="section">
+        <h2 class="section-title"><i class="fas fa-cogs"></i> Our Services</h2>
+        <div class="services-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Service</th>
+                        <th>Price</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><i class="fas fa-refresh"></i> Bootloop Fix</td>
+                        <td class="price">₹30–₹50</td>
+                        <td>TWRP or EDL revive</td>
+                    </tr>
+                    <tr>
+                        <td><i class="fas fa-unlock"></i> FRP Unlock</td>
+                        <td class="price">₹50–₹100</td>
+                        <td>Google account bypass</td>
+                    </tr>
+                    <tr>
+                        <td><i class="fas fa-mobile"></i> MI Account Unlock</td>
+                        <td class="price">₹100–₹150</td>
+                        <td>MIUI bypass (offline/online)</td>
+                    </tr>
+                    <tr>
+                        <td><i class="fas fa-bolt"></i> Dead Phone Flash</td>
+                        <td class="price">₹100+</td>
+                        <td>EDL mode flashing</td>
+                    </tr>
+                    <tr>
+                        <td><i class="fas fa-download"></i> Custom ROM Install</td>
+                        <td class="price">₹50–₹100</td>
+                        <td>Performance or UI upgrade</td>
+                    </tr>
+                    <tr>
+                        <td><i class="fas fa-undo"></i> Stock ROM Restore</td>
+                        <td class="price">₹50</td>
+                        <td>Official MIUI reinstallation</td>
+                    </tr>
+                    <tr>
+                        <td><i class="fas fa-key"></i> Pattern/Password Unlock</td>
+                        <td class="price">₹50–₹80</td>
+                        <td>No data loss (if possible)</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="section">
+        <h2 class="section-title"><i class="fas fa-images"></i> Work Gallery</h2>
+        <div class="gallery-grid">
+            <div class="gallery-item">
+                <i class="fas fa-mobile-alt"></i>
+                <h3>Redmi 5A Revive Demo</h3>
+                <p>Complete bootloop recovery process demonstration</p>
+            </div>
+            <div class="gallery-item">
+                <i class="fas fa-usb"></i>
+                <h3>Flashing Setup</h3>
+                <p>OTG + TWRP professional setup showcase</p>
+            </div>
+            <div class="gallery-item">
+                <i class="fas fa-shield-alt"></i>
+                <h3>FRP Unlock Screenshots</h3>
+                <p>Step-by-step Google bypass process</p>
+            </div>
+            <div class="gallery-item">
+                <i class="fas fa-check-circle"></i>
+                <h3>MI Account Bypass Proof</h3>
+                <p>Successful MIUI account removal evidence</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Offers Section -->
+    <section id="offers" class="section">
+        <h2 class="section-title"><i class="fas fa-fire"></i> Special Offers</h2>
+        <div class="offers-grid">
+            <div class="offer-card">
+                <div class="offer-content">
+                    <div class="offer-price">₹30</div>
+                    <h3>Flash Fix Special</h3>
+                    <p>Quick bootloop recovery at student-friendly price</p>
+                </div>
+            </div>
+            <div class="offer-card">
+                <div class="offer-content">
+                    <div class="offer-price">₹120</div>
+                    <h3>Combo Deal</h3>
+                    <p>Unlock + Flash = Save ₹30</p>
+                </div>
+            </div>
+            <div class="offer-card">
+                <div class="offer-content">
+                    <div class="offer-price">₹20</div>
+                    <h3>Refer & Earn</h3>
+                    <p>Get cashback for every successful referral</p>
+                </div>
+            </div>
+            <div class="offer-card">
+                <div class="offer-content">
+                    <div class="offer-price">FREE</div>
+                    <h3>Student Diagnosis</h3>
+                    <p>Free problem assessment for school students</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section">
+        <h2 class="section-title"><i class="fas fa-message"></i> Get In Touch</h2>
+        <div class="contact-buttons">
+            <a href="https://wa.me/917309741710" class="contact-btn whatsapp">
+                <i class="fab fa-whatsapp"></i>
+                WhatsApp Message
+            </a>
+            <a href="https://t.me/TechNinjaOrai" class="contact-btn telegram">
+                <i class="fab fa-telegram"></i>
+                Telegram Chat
+            </a>
+            <a href="https://instagram.com/techninjaorai" class="contact-btn instagram">
+                <i class="fab fa-instagram"></i>
+                Instagram DM
+            </a>
+        </div>
+        <div style="text-align: center; margin-top: 2rem; color: var(--text-secondary);">
+            <i class="fas fa-map-marker-alt"></i> Located in Orai, Uttar Pradesh
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section">
+        <h2 class="section-title"><i class="fas fa-user"></i> About Abhishek</h2>
+        <div class="about-content">
+            <p>I'm <strong>Abhishek</strong>, a passionate techie from Orai. I started TechNinja Orai to help people fix their phones quickly and affordably. Whether it's a bootloop, FRP lock, or MI account issue — I bring phones back to life with smart software solutions.</p>
+            <br>
+            <p>As a Class 11 student with deep knowledge of Android internals, custom recovery systems, and flashing techniques, I understand the frustration of a dead or locked phone. My mission is to provide reliable, student-friendly tech solutions right here in Orai.</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>© 2025 TechNinja Orai — Powered by passion, built by skill.</p>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileToggle = document.querySelector('.mobile-toggle');
+        const navMenu = document.querySelector('.nav-menu');
+
+        mobileToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+                // Close mobile menu after clicking
+                navMenu.classList.remove('active');
+            });
+        });
+
+        // Add glow effect to cards on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'glow 2s ease-in-out';
+                }
+            });
+        }, observerOptions);
+
+        // Observe cards and sections
+        document.querySelectorAll('.gallery-item, .offer-card, .services-table').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Add CSS animation for glow effect
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes glow {
+                0%, 100% { box-shadow: 0 0 5px rgba(0, 243, 255, 0.3); }
+                50% { box-shadow: 0 0 20px rgba(0, 243, 255, 0.6), 0 0 30px rgba(0, 243, 255, 0.4); }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>
